@@ -5,13 +5,12 @@ import matplotlib.pyplot as plt
 
 c = sqlite3.connect("POI.sqlite")
 
-working_cost_super = 80
-working_cost_amazon = 37
+working_cost_super = 20
+working_cost_amazon = 5
 cost_per_km_super = 150
 cost_per_km_amazon = 200
 distance_between_clients = 0.05
-number_of_clients = 10
-kg_per_client = 15
+kg_per_client = 1
 
 res = c.execute("select * from supermarkets")
 supermarkets = res.fetchall()
@@ -54,14 +53,16 @@ for i in range(topleft[0], bottomright[0], -1):
 _, s_nn = tree_supermarkets.query(coords)
 _, a_nn = tree_amazons.query(coords)
 
-bitmap = []
-for i in range(0, 98):
-    bitmap.append([])
-    for j in range(0, 151):
-        if compute_for_coords(coords[151*i+j][0], coords[151*i+j][1], supermarkets[s_nn[151*i+j]], amazons[a_nn[151*i+j]]):
-            bitmap[i].append([255,255,255])
-        else:
-            bitmap[i].append([0,0,0])
+nbs = [1, 3, 10, 20, 40]
+for number_of_clients in nbs:
+    bitmap = []
+    for i in range(0, 98):
+        bitmap.append([])
+        for j in range(0, 151):
+            if compute_for_coords(coords[151*i+j][0], coords[151*i+j][1], supermarkets[s_nn[151*i+j]], amazons[a_nn[151*i+j]]):
+                bitmap[i].append([255,255,255])
+            else:
+                bitmap[i].append([0,0,0])
 
-plt.imshow(bitmap, interpolation='nearest')
-plt.savefig("15kg" + str(number_of_clients) + ".jpg")
+    plt.imshow(bitmap, interpolation='nearest')
+    plt.savefig("static/graphs/" + str(number_of_clients) + "_clients_proxy.jpg")

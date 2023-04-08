@@ -1,0 +1,2 @@
+Hyper = cout de fonctionnement par kg de produit (68 et 170 gco2/kg) + nombre d'acheteur * cout distance moyenne d'un trajet (150gco2/km)
+ecommerce = cout de fonctionnement par kg de produit (37 gco2/kg) + cout distance parcourue pour couvrir tout les acheteurs (70gco2/tonne-km pour les poid lourd, ou 200gco2/km pour les camionnettes) / nombre d'acheteurs

@@ -1,6 +1,6 @@
 # Amazon est écolo ?!
 
-Un calculateur et une analyse des condition requises pour que la livraison soit moins emetrice de gas à effet de serre que le déplacement en supermaché.
+Un calculateur et une analyse des conditions requises pour que la livraison soit moins émettrice de gaz à effet de serre que le déplacement en supermarché.
 
 ## Install
 
